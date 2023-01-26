@@ -93,7 +93,8 @@ var geojsonMarkerOptions = {
   fillOpacity: 0.8
 };
 
-function naytaKayttajanSijainti() {
+async function naytaKayttajanSijainti() {
+  navigator.geolocation.getCurrentPosition(success, error, options);
   document.getElementById("teksti").innerHTML = mylocation.latitude + " " + mylocation.longitude
   let tappa = L.circleMarker([mylocation.latitude, mylocation.longitude], geojsonMarkerOptions)
   tappa.addTo(mymap)
