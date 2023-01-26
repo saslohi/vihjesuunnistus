@@ -112,7 +112,7 @@ function naytaInfo() {
   <h2>Tervetuloa vihjesuunnistuksen pariin! </h2> 
   <br> Tähän tulee peliohjeet <br>
   `
-  
+
   document.getElementById("teksti").innerHTML = infoteksti
   document.getElementById("tekstiruutu").style.display = "block"
   //document.getElementById("sisalto").class = infotyyli
@@ -145,6 +145,13 @@ if (isMobile) {
   document.getElementById("ruksi").addEventListener('click', piilotaLoota)
 }
 
+
+const resizeOps = () => {
+  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+};
+
+resizeOps();
+window.addEventListener("resize", resizeOps);
 
 
 
