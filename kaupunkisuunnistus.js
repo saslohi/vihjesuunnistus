@@ -95,7 +95,7 @@ var geojsonMarkerOptions = {
 
 async function naytaKayttajanSijainti() {
   navigator.geolocation.getCurrentPosition(success, error, options);
-  document.getElementById("teksti").innerHTML = mylocation.latitude + " " + mylocation.longitude
+  document.getElementById("teksti").innerHTML = mylocation.latitude + " " + mylocation.longitude + "<br> Tarkkuudella n. " + mylocation.accuracy + " metriä."
   let tappa = L.circleMarker([mylocation.latitude, mylocation.longitude], geojsonMarkerOptions)
   tappa.addTo(mymap)
   navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
