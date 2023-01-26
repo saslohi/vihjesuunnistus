@@ -93,12 +93,15 @@ var geojsonMarkerOptions = {
   fillOpacity: 0.8
 };
 
-document.getElementById("naytaSijainti").addEventListener('click', function(){
+function naytaKayttajanSijainti() {
   document.getElementById("teksti").innerHTML = mylocation.latitude + " " + mylocation.longitude
   let tappa = L.circleMarker([mylocation.latitude, mylocation.longitude], geojsonMarkerOptions)
   tappa.addTo(mymap)
   mymap.flyTo([mylocation.latitude, mylocation.longitude], 15, {animate: true, duration: 0.75})
-})
+}
+
+document.getElementById("naytaSijainti").addEventListener('click', naytaKayttajanSijainti)
+document.getElementById("naytaSijainti").addEventListener('touchstart', naytaKayttajanSijainti)
 
 
 
