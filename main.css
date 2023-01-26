@@ -3,15 +3,7 @@
 /*  */
 
 
-/* html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-} */
 
-/* body {
-    padding: 0;
-    margin: 0;
-} */
 
 body {
     padding: 0;
@@ -30,11 +22,7 @@ html, body {
     position: none;
 }
 
-/* *,
-*:before,
-*:after {
-    box-sizing: inherit;
-} */
+
 
 #tekstiruutu {
     background-color: white;
@@ -58,7 +46,6 @@ a {
 /* Header styling and header elements */
 
 /* background-color with HEX for IE support (when do we get rid of it?) */
-
 
 
 #ylamenu {
