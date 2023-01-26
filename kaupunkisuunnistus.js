@@ -22,7 +22,7 @@ var karttasarjaHarmaa = L.tileLayer('https://kartta.hel.fi/ws/geoserver/avoindat
 
 
 
-var hkiOsm = L.tileLayer('http://tiles.hel.ninja/styles/hel-osm-bright/{z}/{x}/{y}@2x@fi.png', {
+var hkiOsm = L.tileLayer('https://tiles.hel.ninja/styles/hel-osm-bright/{z}/{x}/{y}@2x@fi.png', {
     maxZoom: 18,
 })
 
