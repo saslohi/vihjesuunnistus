@@ -104,7 +104,7 @@ async function naytaKayttajanSijainti() {
 }
 
 document.getElementById("naytaSijainti").addEventListener('click', naytaKayttajanSijainti)
-document.getElementById("naytaSijainti").addEventListener('touchstart', naytaKayttajanSijainti)
+document.getElementById("naytaSijainti").addEventListener('touchend', naytaKayttajanSijainti)
 
 
 
