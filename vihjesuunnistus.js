@@ -107,6 +107,26 @@ async function naytaKayttajanSijainti() {
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+async function tarkastaRasti() {
+  navigator.geolocation.getCurrentPosition(success, error, options);
+  let etaisyys = pythagoreanDistanceBetweenPoints(mylocation.latitude, mylocation.longitude, capsa.latitude, capsa.longitude)
+  let naytettavaTeksti = "";
+
+  if (etaisyys < 100) {
+    naytettavaTeksti = "Rasti alle sadan metrin sisällä!"
+  } else if (etaisyys < 300) {
+    nayetttavaTeksti = "Lämpenee lämpenee... rasti alle 300 metrin päässä."
+  } else {
+    naytettavaTeksti = "Olet vielä yli 300 metrin päässä lähimmästä rastista. Jatka etsimistä!"
+  }
+
+  document.getElementById("teksti").innerHTML = naytettavaTeksti
+  document.getElementById("tekstiruutu").style.display = "block"
+
+}
+
+
+
 function naytaInfo() {
   let infoteksti = `
   <h2>Tervetuloa vihjesuunnistuksen pariin! </h2> 
@@ -134,15 +154,17 @@ function piilotaLoota() {
 
 
 if (isMobile) {
-  document.getElementById("naytaSijainti").addEventListener('touchend', naytaKayttajanSijainti)
+  document.getElementById("naytaSijaintiNappi").addEventListener('touchend', naytaKayttajanSijainti)
   document.getElementById("infoNappi").addEventListener('touchend', naytaInfo)
   document.getElementById("asetusNappi").addEventListener('touchend', naytaAsetukset)
   document.getElementById("ruksi").addEventListener('touchend', piilotaLoota)
+  document.getElementById("tarkastaRastiNappi").addEventListener('touchend', tarkastaRasti)
 } else {
-  document.getElementById("naytaSijainti").addEventListener('click', naytaKayttajanSijainti)
+  document.getElementById("naytaSijaintiNappi").addEventListener('click', naytaKayttajanSijainti)
   document.getElementById("infoNappi").addEventListener('click', naytaInfo)
   document.getElementById("asetusNappi").addEventListener('click', naytaAsetukset)
   document.getElementById("ruksi").addEventListener('click', piilotaLoota)
+  document.getElementById("tarkastaRastiNappi").addEventListener('click', tarkastaRasti)
 }
 
 
