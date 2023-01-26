@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -28,10 +28,29 @@
         <![endif]-->
         
         <div id="map"> 
-            <div class="leaflet-control-container"><div class="leaflet-bottom leaflet-left"><button id="naytaSijainti" style="pointer-events: auto">Näytä sijainti</button></div></div>  
+            <div class="leaflet-control-container">
+                <div id="alamenu" class="leaflet-bottom leaflet-left">
+                    <button id="naytaSijainti">Sijainti</button>
+                    <button id="tarkastaRasti">Tarkista rasti</button>
+                </div>
+                <div class="leaflet-control-container">
+                    <div id="ylamenu"class="leaflet-top leaflet-right">
+                        <button id="infoNappi">info</button>
+                        <button id="asetusNappi">Asetukset</button>
+                    </div>
+                </div>
+            </div>
+            <div id="tekstiruutu" class="teksti">
+                <div id="sulkunappi">
+                    <button id="ruksi"><b>x</b></button>
+                </div>
+                <div id="sisalto">
+                    <div id="teksti">
+                        <p>TÄHÄN TEKSTIÄ</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="teksti">Testiteksti</div>
-        
-        <script src="kaupunkisuunnistus.js" async defer></script>
+        <script src="vihjesuunnistus.js" async defer></script>
     </body>
 </html>

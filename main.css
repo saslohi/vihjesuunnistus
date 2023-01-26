@@ -3,46 +3,53 @@
 /*  */
 
 
-html {
-    height: 100%;
+/* html {
     box-sizing: border-box;
     scroll-behavior: smooth;
+} */
+
+/* body {
+    padding: 0;
+    margin: 0;
+} */
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif, Arial;
 }
 
-
-
-#kotikatu {
-    display: none;
-}
-
-#kaupunginosa {
-    display: block;
-    width: 700px;
-}
-
-#karttapalvelu {
-    display: none;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+html, body {
+    height: 100vh;
+    width: 100vw;
 }
 
 #map {
-    height:650px;
-    width: 650px;
+    height: 100vh;
+    width: 100vw;
+    position: none;
 }
 
-body {
+/* *,
+*:before,
+*:after {
+    box-sizing: inherit;
+} */
+
+#tekstiruutu {
+    background-color: white;
+    z-index: 1000;
+}
+
+
+/* body {
     position: relative;
     margin: 0;
     padding-bottom: 6rem;
     min-height: 100%;
     font-size: 1em;
     font-family: 'Roboto', sans-serif, Arial;
-}
+} */
 
 a {
     color: black;
@@ -52,75 +59,70 @@ a {
 
 /* background-color with HEX for IE support (when do we get rid of it?) */
 
-.header {
-    height: 55px;
-    background-color: black;
+
+
+#ylamenu {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.hds-koros {
-    width: 100%;
-    line-height: 0;
-  }
-  
-  .hds-koros--flip-horizontal {
-    transform: scaleY(-1);
-  }
-
-#rajapinnasta p {
-    font-size: small;
-    margin-block-start: -10px;
-    white-space: pre-wrap;
+#alamenu {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.tulosteksti {
+#tekstiruutu {
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    right: 25%;
+    bottom: 25%;
+    width: fit-content;
+    min-width: 45%;
+    border-radius: 25px;
+    border: 4px solid #7596a1;
+    padding: 15px;
+    -webkit-box-shadow: 2px 2px 5px #888;
+    box-shadow: 2px 2x 4px #888;
     display: none;
 }
-
-
-
-#kaavamaaraysPiilotaButton {
-    display: none;
-}
-
-#esikatseluWfsKysely {
-    display:none;
-}
-
-#wfsKyselyPiilotaButton {
-    display: none;
-}
-
 
 .teksti {
     padding-top: 0px;
-    padding-left: 5%;
-    padding-bottom: 5%;
+    padding-left: 5px;
+    padding-bottom: 5px;
     margin-top: 5px;
-    margin-right: 25px;
+    margin-right: 5px;
 }
 
-.sisalto {
-    padding-top: 35px;
-    margin-top: 35px;
+#ruksi {
+    font-size: 1.1rem;
+    padding-top: 1px;
+    padding-right: 3px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+}
+
+#sulkunappi {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: -10px;
 }
 
-.karttavalinta {
-    flex: 1;
-}
+#sisalto {
+    font-size: 1.8rem;
+} 
 
-.tulostekstit {
-    flex: 1;
-    margin-left: 20px;
-    margin-top: 75px;
-}
-
-#kotikatuframe {
-    height: 800px;
-    width: 850px;
-}
-
-.footer {
+/* .footer {
     position: absolute;
     width: 100%;
     text-align: center;
@@ -132,7 +134,7 @@ a {
 
 .footer p {
     color: white;
-}
+} */
 
 input {
     margin-left: 10px;
@@ -144,14 +146,14 @@ input {
 /* Text settings */
 
 h2 {
-    font-family: roboto, Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin-block-end: 0;
-    font-size: 1.8em;
+    font-size: 1em;
     display: block;
 }
 
 p {
-    font-family: roboto, Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.50;
     color: #373D3f;
 }
@@ -180,6 +182,7 @@ button {
     background-position: 0 -15px;
     transition: all 0.25s ease 0s;
     background-color:#373D3f;
+    pointer-events: auto;
 }
 
 button:hover {
@@ -198,61 +201,3 @@ button:active {
     visibility: visible;
     opacity: 1;
 }
-
-
-.hds-loading-spinner {
-    --spinner-size: 4rem;
-    --spinner-color: black;
-    --spinner-thickness: 0.5rem;
-    --spinner-rotation-animation-duration: 1.5s;
-    --spinner-color-animation-duration: 4.5s;
-  
-    --spinner-color-stage1: black;
-    --spinner-color-stage2: black;
-    --spinner-color-stage3: black;
-  
-    position: relative;
-    width: var(--spinner-size);
-    height: var(--spinner-size);
-    border-top-color: var(--spinner-color);
-  }
-  
-  .hds-loading-spinner--multicolor {
-    border-top-color: var(--spinner-color-stage1);
-    animation: spinner-color-animation var(--spinner-color-animation-duration) cubic-bezier(0.6, 0.2, 0.4, 0.9) infinite;
-  }
-  
-  .hds-loading-spinner--small {
-    --spinner-size: 1.5rem;
-    --spinner-thickness: 0.1875rem;
-  }
-  
-  .hds-loading-spinner div {
-    position: absolute;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    border: var(--spinner-thickness) solid transparent;
-    border-top-color: inherit;
-    border-radius: 50%;
-    animation: spinner-rotation-animation var(--spinner-rotation-animation-duration) cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
-  }
-  
-  .hds-loading-spinner div:nth-child(2) {
-    animation-delay: -0.15s;
-  }
-  .hds-loading-spinner div:nth-child(3) {
-    animation-delay: -0.3s;
-  }
-  
-  @keyframes spinner-rotation-animation {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  @keyframes spinner-color-animation {
-    0% {}
-    33.3% { border-top-color: var(--spinner-color-stage2) }
-    66.6% { border-top-color: var(--spinner-color-stage3) }
-    100% {}
-  }
