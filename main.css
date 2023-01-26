@@ -1,0 +1,294 @@
+/* General styling, Kaupunkisuunnistus */
+/*  */
+/*  */
+
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+
+#kotikatu {
+    display: none;
+}
+
+#kaupunginosa {
+    display: block;
+    width: 700px;
+}
+
+#karttapalvelu {
+    display: none;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+#map {
+    height:650px;
+    width: 650px;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif, Arial;
+}
+
+a {
+    color: black;
+}
+
+/* Official Helsinki typeface */
+
+@font-face {
+    font-family: 'Helsinki Grotesk';
+    src: url('fonts/HelsinkiGrotesk-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('fonts/HelsinkiGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('fonts/HelsinkiGrotesk-Regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('fonts/HelsinkiGrotesk-Regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('fonts/HelsinkiGrotesk-Regular.svg#HelsinkiGrotesk-Regular') format('svg');
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* Header styling and header elements */
+
+/* background-color with HEX for IE support (when do we get rid of it?) */
+
+.header {
+    height: 55px;
+    background-color: black;
+}
+
+.hds-koros {
+    width: 100%;
+    line-height: 0;
+  }
+  
+  .hds-koros--flip-horizontal {
+    transform: scaleY(-1);
+  }
+
+#rajapinnasta p {
+    font-size: small;
+    margin-block-start: -10px;
+    white-space: pre-wrap;
+}
+
+.tulosteksti {
+    display: none;
+}
+
+#Helsinki-logo {
+    background-color: black;
+    height: 50px;
+}
+
+#moderniVaakuna {
+    color: white;
+    height: 40px;
+    z-index: 100;
+    width: auto;
+    z-index: 100;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+#esikatseluKaavamaarays {
+    display: none;
+}
+
+#kaavamaaraysPiilotaButton {
+    display: none;
+}
+
+#esikatseluWfsKysely {
+    display:none;
+}
+
+#wfsKyselyPiilotaButton {
+    display: none;
+}
+
+
+.teksti {
+    padding-top: 0px;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    margin-top: 5px;
+    margin-right: 25px;
+}
+
+.sisalto {
+    padding-top: 35px;
+    margin-top: 35px;
+    display: flex;
+}
+
+.karttavalinta {
+    flex: 1;
+}
+
+.tulostekstit {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 75px;
+}
+
+#kotikatuframe {
+    height: 800px;
+    width: 850px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 100;
+    bottom: 0;
+    height: 85px;
+}
+
+.footer p {
+    color: white;
+}
+
+input {
+    margin-left: 10px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+
+/* Text settings */
+
+h2 {
+    font-family: Helsinki Grotesk, Arial, sans-serif;
+    margin-block-end: 0;
+    font-size: 1.8em;
+    display: block;
+}
+
+p {
+    font-family: Helsinki Grotesk, Arial, sans-serif;
+    line-height: 1.50;
+    color: #373D3f;
+}
+
+p a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+p b {
+    font-size: 1.15em;
+}
+
+/* Napit */
+
+button {
+    color: #ffffff;
+    border-bottom: 2px solid #ffc61e;
+    border-radius: 4px;
+    border: 2px solid black;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin: 1px 2px 1px 2px;
+    background-position: 0 -15px;
+    transition: all 0.25s ease 0s;
+    background-color:#373D3f;
+}
+
+button:hover {
+    color: black;
+    background-color:white;
+}
+
+button:active {
+    -webkit-box-shadow: inset 0px 0px 8px #000000;
+    -moz-box-shadow: inset 0px 0px 8px #000000;
+    box-shadow: inset 0px 0px 8px #000000;
+    outline: none;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.hds-loading-spinner {
+    --spinner-size: 4rem;
+    --spinner-color: black;
+    --spinner-thickness: 0.5rem;
+    --spinner-rotation-animation-duration: 1.5s;
+    --spinner-color-animation-duration: 4.5s;
+  
+    --spinner-color-stage1: black;
+    --spinner-color-stage2: black;
+    --spinner-color-stage3: black;
+  
+    position: relative;
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    border-top-color: var(--spinner-color);
+  }
+  
+  .hds-loading-spinner--multicolor {
+    border-top-color: var(--spinner-color-stage1);
+    animation: spinner-color-animation var(--spinner-color-animation-duration) cubic-bezier(0.6, 0.2, 0.4, 0.9) infinite;
+  }
+  
+  .hds-loading-spinner--small {
+    --spinner-size: 1.5rem;
+    --spinner-thickness: 0.1875rem;
+  }
+  
+  .hds-loading-spinner div {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: var(--spinner-thickness) solid transparent;
+    border-top-color: inherit;
+    border-radius: 50%;
+    animation: spinner-rotation-animation var(--spinner-rotation-animation-duration) cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
+  }
+  
+  .hds-loading-spinner div:nth-child(2) {
+    animation-delay: -0.15s;
+  }
+  .hds-loading-spinner div:nth-child(3) {
+    animation-delay: -0.3s;
+  }
+  
+  @keyframes spinner-rotation-animation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes spinner-color-animation {
+    0% {}
+    33.3% { border-top-color: var(--spinner-color-stage2) }
+    66.6% { border-top-color: var(--spinner-color-stage3) }
+    100% {}
+  }
