@@ -153,8 +153,11 @@ const resizeOps = () => {
 resizeOps();
 window.addEventListener("resize", resizeOps);
 
+let leveys = window.innerWidth
+let korkeus = window.innerHeight
 
-
+document.getElementById("map").style.width = leveys
+document.getElementById("map").style.height = korkeus
 
 
 
