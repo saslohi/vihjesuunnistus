@@ -101,11 +101,19 @@ async function naytaKayttajanSijainti() {
   navigator.vibrate(200)
  // window.navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
   mymap.flyTo([mylocation.latitude, mylocation.longitude], 15, {animate: true, duration: 0.75})
-  
 }
 
-document.getElementById("naytaSijainti").addEventListener('click', naytaKayttajanSijainti)
-document.getElementById("naytaSijainti").addEventListener('touchend', naytaKayttajanSijainti)
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (isMobile) {
+  document.getElementById("naytaSijainti").addEventListener('touchend', naytaKayttajanSijainti)
+} else {
+  document.getElementById("naytaSijainti").addEventListener('click', naytaKayttajanSijainti)
+}
+
+
+
+
 
 
 
