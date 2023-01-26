@@ -96,12 +96,13 @@ var geojsonMarkerOptions = {
 
 async function naytaKayttajanSijainti() {
   navigator.geolocation.getCurrentPosition(success, error, options);
-  document.getElementById("sisalto").innerHTML = mylocation.latitude + " " + mylocation.longitude + "<br> Tarkkuudella n. " + mylocation.accuracy + " metriä."
+  document.getElementById("teksti").innerHTML = mylocation.latitude + " " + mylocation.longitude + "<br> Tarkkuudella n. " + mylocation.accuracy + " metriä."
   let tappa = L.circleMarker([mylocation.latitude, mylocation.longitude], geojsonMarkerOptions)
   tappa.addTo(mymap)
   //navigator.vibrate(200)
   navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
   mymap.flyTo([mylocation.latitude, mylocation.longitude], 15, {animate: true, duration: 0.75})
+  document.getElementById("tekstiruutu").style.display = "block"
 }
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -111,7 +112,7 @@ function naytaInfo() {
   <h2>Tervetuloa vihjesuunnistuksen pariin! </h2> 
   <br> Tähän tulee peliohjeet <br>
   `
-
+  
   document.getElementById("teksti").innerHTML = infoteksti
   document.getElementById("tekstiruutu").style.display = "block"
   //document.getElementById("sisalto").class = infotyyli
@@ -125,7 +126,6 @@ function naytaAsetukset() {
   `
   document.getElementById("teksti").innerHTML = asetusteksti
   document.getElementById("tekstiruutu").style.display = "block"
-
 }
 
 function piilotaLoota() {
