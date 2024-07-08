@@ -72,12 +72,14 @@ var rastiLayer = L.featureGroup()
 
 var rautatientori = {
   "rastinumero": 1,
+  "vihjeSeuraavaan": "tässä on vihje, jonka avulla seuraava rasti pitäisi löytyä: <br> Valitettavasti vihjettä ei löytynyt, koska rastejakaan ei oikein ole :/",
   "latitude": 60.201993,
   "longitude": 24.968770
 }
 
 var capsa = {
   "rastinumero": 2,
+  "vihjeSeuraavaan": "tässä on vihje, joka on melko huono: vihjettä ei ole",
   "latitude": 60.211958,
   "longitude": 24.953384
 }
@@ -89,6 +91,7 @@ rastit.push(capsa)
 
 function lataaRastitLayerille(rasti) {
   let rastiTappa = L.circleMarker([rasti.latitude, rasti.longitude], geojsonMarkerOptions)
+  rastiTappa.bindPopup(`Onnittelut! Löysit rastin numero ${rastinumero}! <br> Vihje seuraavaan: ${rasti.vihjeSeuraavaan}`)
   rastiTappa.addTo(rastiLayer)
 }
 
