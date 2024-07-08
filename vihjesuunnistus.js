@@ -91,7 +91,7 @@ rastit.push(capsa)
 
 function lataaRastitLayerille(rasti) {
   let rastiTappa = L.circleMarker([rasti.latitude, rasti.longitude], geojsonMarkerOptions)
-  rastiTappa.bindPopup(`Onnittelut! Löysit rastin numero ${rastinumero}! <br> Vihje seuraavaan: ${rasti.vihjeSeuraavaan}`)
+  rastiTappa.bindPopup(`Onnittelut! Löysit rastin numero ${rasti.rastinumero}! <br> Vihje seuraavaan: ${rasti.vihjeSeuraavaan}`)
   rastiTappa.addTo(rastiLayer)
 }
 
