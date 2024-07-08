@@ -68,7 +68,8 @@ var geojsonMarkerOptions = {
 
 // Rastit ja niiden sijainnit
 
-var rastiLayer = L.geoJSON().addTo(mymap);
+var rastiLayer = L.featureGroup()
+mymap.addLayer(rastiLayer)
 
 var rautatientori = {
   "rastinumero": 1,
@@ -89,7 +90,7 @@ rastit.push(capsa)
 
 function lataaRastitLayerille(rasti) {
   let rastiTappa = L.circleMarker([rasti.latitude, rasti.longitude], geojsonMarkerOptions)
-  rastiLayer.addData(rastiTappa)
+  rastiTappa.addTo(rastiLayer)
 }
 
 rastit.forEach(lataaRastitLayerille)
