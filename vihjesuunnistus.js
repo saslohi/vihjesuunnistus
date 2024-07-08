@@ -91,7 +91,7 @@ rastit.push(capsa)
 
 function lataaRastitLayerille(rasti) {
   let rastiTappa = L.circleMarker([rasti.latitude, rasti.longitude], geojsonMarkerOptions)
-  rastiTappa.bindPopup(`Onnittelut! Löysit rastin numero ${rasti.rastinumero}! <br> Vihje seuraavaan: ${rasti.vihjeSeuraavaan}`)
+  rastiTappa.bindPopup(`Onnittelut! Löysit rastin numero ${rasti.rastinumero}! <br> <br> Vihje seuraavaan: ${rasti.vihjeSeuraavaan}`)
   rastiTappa.addTo(rastiLayer)
 }
 
@@ -212,12 +212,16 @@ function naytaAsetukset() {
   let asetusteksti = `
   <h2> Peliasetukset </h2> 
   <br> Laita huijausmoodi <button id="huijauksetPaalle"> TÄSTÄ </button> <br>
-  Laita huijausmoodi <button id="huijauksetPois"> POIS </button>
+  Laita huijausmoodi <button id="huijauksetPois"> POIS </button> <br>
+  Aseta keksi <button id="asetaKeksi"> Tästä </button> <br>
+  Poista keksit <button id="poistaKeksit"> Tästä </button> <br>
   `
   document.getElementById("teksti").innerHTML = asetusteksti
   document.getElementById("tekstiruutu").style.display = "block"
   document.getElementById("huijauksetPaalle").addEventListener('click', naytaRastit)
   document.getElementById("huijauksetPois").addEventListener('click', piilotaRastit)
+  document.getElementById("asetaKeksi").addEventListener('click', asetaKeksi)
+  document.getElementById("poistaKeksit").addEventListener('click', poistaKeksit)
 }
 
 function piilotaLoota() {
@@ -258,7 +262,62 @@ document.getElementById("map").style.width = leveys
 document.getElementById("map").style.height = korkeus
 
 
+// Keksien käsittely https://javascript.info/cookie saitilta
 
+
+// returns the cookie with the given name,
+// or undefined if not found
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+
+// Sets the cookie’s name to the given value with path=/ by default (can be modified to add other defaults):
+
+function setCookie(name, value, attributes = {}) {
+
+  attributes = {
+    path: '/',
+    // add other defaults here if necessary
+    ...attributes
+  };
+
+  if (attributes.expires instanceof Date) {
+    attributes.expires = attributes.expires.toUTCString();
+  }
+
+  let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+  for (let attributeKey in attributes) {
+    updatedCookie += "; " + attributeKey;
+    let attributeValue = attributes[attributeKey];
+    if (attributeValue !== true) {
+      updatedCookie += "=" + attributeValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+}
+
+// Example of use:
+// setCookie('user', 'John', {secure: true, 'max-age': 3600});
+
+function deleteCookie(name) {
+  setCookie(name, "", {
+    'max-age': -1
+  })
+}
+
+function asetaKeksi() {
+  setCookie('tehtavassa', '1', {secure: true, 'max-age': 31536000})
+}
+
+function poistaKeksit() {
+  deleteCookie('tehtavassa')
+}
 
 
 
