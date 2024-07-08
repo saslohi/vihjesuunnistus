@@ -51,22 +51,41 @@ var taustaKartat = {
 var karttatasot = {
 }
 
+L.control.layers(taustaKartat,karttatasot, {
+  collapsed: false
+})
 
-// Sijainteja
+// Rastit ja niiden sijainnit
+
+var rastiLayer = L.geoJSON().addTo(mymap);
 
 var rautatientori = {
+  "rastinumero": 1,
   "latitude": 60.201993,
   "longitude": 24.968770
 }
 
 var capsa = {
+  "rastinumero": 2,
   "latitude": 60.211958,
   "longitude": 24.953384
 }
 
-L.control.layers(taustaKartat,karttatasot, {
-    collapsed: false
-})
+var rastit = []
+rastit.push(rautatientori)
+rastit.push(capsa)
+
+
+function lataaRastitLayerille(rasti) {
+  let rastiTappa = L.circleMarker([rasti.latitude, rasti.longitude], geojsonMarkerOptions)
+  rastiLayer.addData(rastiTappa)
+}
+
+rastit.forEach(lataaRastitLayerille())
+
+function naytaRastit() {
+    rastiLayer.addTo(mymap)
+}
 
 // Leafletin määrityksiä
 
@@ -134,10 +153,8 @@ async function naytaKayttajanSijainti() {
   document.getElementById("tekstiruutu").style.display = "block"
 }
 
-function naytaRastit() {
-  let rastiTappa = L.circleMarker([capsa.latitude, capsa.longitude], geojsonMarkerOptions)
-  rastiTappa.addTo(mymap)
-}
+
+
 
 // Testataan onko mobiili
 
