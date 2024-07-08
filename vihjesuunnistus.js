@@ -69,7 +69,6 @@ var geojsonMarkerOptions = {
 // Rastit ja niiden sijainnit
 
 var rastiLayer = L.featureGroup()
-mymap.addLayer(rastiLayer)
 
 var rautatientori = {
   "rastinumero": 1,
