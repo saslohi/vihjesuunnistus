@@ -1,4 +1,4 @@
-function pythagoreanDistanceBetweenPoints(lat1, lon1, lat2, lon2) {
+﻿function pythagoreanDistanceBetweenPoints(lat1, lon1, lat2, lon2) {
     const R = 6371e3;
     const x = (lon2-lon1) * Math.cos((lat1+lat2)/2);
     const y = (lat2-lat1);
