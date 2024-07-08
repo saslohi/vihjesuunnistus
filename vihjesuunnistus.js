@@ -98,6 +98,10 @@ function naytaRastit() {
     rastiLayer.addTo(mymap)
 }
 
+function piilotaRastit() {
+  mymap.removeLayer(rastiLayer)
+}
+
 // Leafletin määrityksiä
 
 const options = {
@@ -205,10 +209,12 @@ function naytaAsetukset() {
   let asetusteksti = `
   <h2> Peliasetukset </h2> 
   <br> Laita huijausmoodi <button id="huijauksetPaalle"> TÄSTÄ </button> <br>
+  Laita huijausmoodi <button id="huijauksetPois"> POIS </button>
   `
   document.getElementById("teksti").innerHTML = asetusteksti
   document.getElementById("tekstiruutu").style.display = "block"
   document.getElementById("huijauksetPaalle").addEventListener('click', naytaRastit)
+  document.getElementById("huijauksetPois").addEventListener('click', piilotaRastit)
 }
 
 function piilotaLoota() {
