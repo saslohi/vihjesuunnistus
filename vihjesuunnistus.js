@@ -134,6 +134,11 @@ async function naytaKayttajanSijainti() {
   document.getElementById("tekstiruutu").style.display = "block"
 }
 
+function naytaRastit() {
+  let rastiTappa = L.circleMarker([capsa.latitude, capsa.longitude], geojsonMarkerOptions)
+  rastiTappa.addTo(mymap)
+}
+
 // Testataan onko mobiili
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -158,7 +163,10 @@ async function tarkastaRasti() {
 
 }
 
-// Infotekstin näyttäminen
+
+// Käyttöliittymä ja ohjeet
+
+// 1 Infotekstin näyttäminen
 
 function naytaInfo() {
   let infoteksti = `
@@ -172,15 +180,16 @@ function naytaInfo() {
 
 }
 
-// Peliasetukset
+// 2 Peliasetukset
 
 function naytaAsetukset() {
   let asetusteksti = `
   <h2> Peliasetukset </h2> 
-  <br> Laita huijausmoodi <br>
+  <br> Laita huijausmoodi <button id="huijauksetPaalle"> TÄSTÄ </button> <br>
   `
   document.getElementById("teksti").innerHTML = asetusteksti
   document.getElementById("tekstiruutu").style.display = "block"
+  document.getElementById("huijauksetPaalle").addEventListener('click', naytaRastit)
 }
 
 function piilotaLoota() {
