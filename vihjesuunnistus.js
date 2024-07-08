@@ -1,4 +1,11 @@
-﻿function pythagoreanDistanceBetweenPoints(lat1, lon1, lat2, lon2) {
+﻿// Vihjesuunnistuksen koodi
+// S Lohi 2023
+
+
+
+// Etäisyyden laskentaan käytettävä funktio, napattu jostain Stackoverflowsta tms.
+
+function pythagoreanDistanceBetweenPoints(lat1, lon1, lat2, lon2) {
     const R = 6371e3;
     const x = (lon2-lon1) * Math.cos((lat1+lat2)/2);
     const y = (lat2-lat1);
@@ -7,7 +14,7 @@
   }
 
 
-
+// Leaflet kartta-alusta, käytössä Helsingin kaupungin OSM karttatyyli
 
 var mymap = L.map('map', {
     renderer: L.canvas()
@@ -21,16 +28,21 @@ var karttasarjaHarmaa = L.tileLayer('https://kartta.hel.fi/ws/geoserver/avoindat
 })
 
 
+// Helsingin OSM tyylitys
 
 var hkiOsm = L.tileLayer('https://tiles.hel.ninja/styles/hel-osm-bright/{z}/{x}/{y}@2x@fi.png', {
     maxZoom: 18,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 })
 
+// Lisätään Helsinki OSM
+
 
 hkiOsm.addTo(mymap)
 
 var mylocation;
+
+// Lisätään taustakarttoihin HkiOSM
 
 var taustaKartat = {
     "Helsinki OSM": hkiOsm
@@ -38,6 +50,9 @@ var taustaKartat = {
 
 var karttatasot = {
 }
+
+
+// Sijainteja
 
 var rautatientori = {
   "latitude": 60.201993,
@@ -53,11 +68,15 @@ L.control.layers(taustaKartat,karttatasot, {
     collapsed: false
 })
 
+// Leafletin määrityksiä
+
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
 };
+
+// Funktio jos position tarkastamiseen (ja voi lisätä sijainnin kartalle)
 
 async function success(pos) {
   const crd = pos.coords;
@@ -79,11 +98,15 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
+// Leaflet navigaattorin säädöt
+
 navigator.geolocation.getCurrentPosition(success, error, options);
 id = navigator.geolocation.watchPosition(success, error, options);
 
 navigator.geolocation.watchPosition(success, error, options);
 
+
+// Markkereiden tyylitys
 
 var geojsonMarkerOptions = {
   radius: 8,
@@ -94,18 +117,27 @@ var geojsonMarkerOptions = {
   fillOpacity: 0.8
 };
 
+// Funktio käyttäjän sijainnin näyttämiseen
+
 async function naytaKayttajanSijainti() {
   navigator.geolocation.getCurrentPosition(success, error, options);
   document.getElementById("teksti").innerHTML = mylocation.latitude + " " + mylocation.longitude + "<br> Tarkkuudella n. " + mylocation.accuracy + " metriä."
+
+  // luodaan markkeri käyttäjän sijainnin kohdalle ja lisätään se kartalle 
   let tappa = L.circleMarker([mylocation.latitude, mylocation.longitude], geojsonMarkerOptions)
   tappa.addTo(mymap)
-  //navigator.vibrate(200)
+  // Pistetään värinät puhelimeen ja siirretään karttanäkymä käyttäjän sijaintiin
+  //  navigator.vibrate(200)
   navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
   mymap.flyTo([mylocation.latitude, mylocation.longitude], 15, {animate: true, duration: 0.75})
   document.getElementById("tekstiruutu").style.display = "block"
 }
 
+// Testataan onko mobiili
+
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+// Tarkastetaan onko käyttäjä lähellä rastia
 
 async function tarkastaRasti() {
   navigator.geolocation.getCurrentPosition(success, error, options);
@@ -125,7 +157,7 @@ async function tarkastaRasti() {
 
 }
 
-
+// Infotekstin näyttäminen
 
 function naytaInfo() {
   let infoteksti = `
@@ -138,6 +170,8 @@ function naytaInfo() {
   //document.getElementById("sisalto").class = infotyyli
 
 }
+
+// Peliasetukset
 
 function naytaAsetukset() {
   let asetusteksti = `
@@ -152,6 +186,7 @@ function piilotaLoota() {
   document.getElementById("tekstiruutu").style.display = "none"
 }
 
+// Mobiili vs Desktop säädöt
 
 if (isMobile) {
   document.getElementById("naytaSijaintiNappi").addEventListener('touchend', naytaKayttajanSijainti)
@@ -167,6 +202,7 @@ if (isMobile) {
   document.getElementById("tarkastaRastiNappi").addEventListener('click', tarkastaRasti)
 }
 
+// Ikkunan koon säädöt ikkunan koon muuttuessa 
 
 const resizeOps = () => {
   document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
@@ -174,6 +210,8 @@ const resizeOps = () => {
 
 resizeOps();
 window.addEventListener("resize", resizeOps);
+
+// Koko ikkunan kokoinen kartta
 
 let leveys = window.innerWidth
 let korkeus = window.innerHeight
