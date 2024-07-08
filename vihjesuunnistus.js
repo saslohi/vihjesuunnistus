@@ -55,6 +55,17 @@ L.control.layers(taustaKartat,karttatasot, {
   collapsed: false
 })
 
+// Markkereiden tyylitys
+
+var geojsonMarkerOptions = {
+  radius: 8,
+  fillColor: "#FF5733",
+  color: "#0000",
+  weight: 1,
+  opacity: 1,
+  fillOpacity: 0.8
+};
+
 // Rastit ja niiden sijainnit
 
 var rastiLayer = L.geoJSON().addTo(mymap);
@@ -71,7 +82,7 @@ var capsa = {
   "longitude": 24.953384
 }
 
-var rastit = []
+const rastit = []
 rastit.push(rautatientori)
 rastit.push(capsa)
 
@@ -81,7 +92,7 @@ function lataaRastitLayerille(rasti) {
   rastiLayer.addData(rastiTappa)
 }
 
-rastit.forEach(lataaRastitLayerille())
+rastit.forEach(lataaRastitLayerille)
 
 function naytaRastit() {
     rastiLayer.addTo(mymap)
@@ -126,16 +137,7 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 // navigator.geolocation.watchPosition(success, error, options);
 
 
-// Markkereiden tyylitys
 
-var geojsonMarkerOptions = {
-  radius: 8,
-  fillColor: "#FF5733",
-  color: "#0000",
-  weight: 1,
-  opacity: 1,
-  fillOpacity: 0.8
-};
 
 // Funktio käyttäjän sijainnin näyttämiseen
 
