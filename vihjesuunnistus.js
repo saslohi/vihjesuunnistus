@@ -99,11 +99,12 @@ function error(err) {
 }
 
 // Leaflet navigaattorin säädöt
+// watchPosition looppaa jatkuvasti, testataan toimiiko vaikka sen poistaa
 
 navigator.geolocation.getCurrentPosition(success, error, options);
-id = navigator.geolocation.watchPosition(success, error, options);
+// id = navigator.geolocation.watchPosition(success, error, options);
 
-navigator.geolocation.watchPosition(success, error, options);
+// navigator.geolocation.watchPosition(success, error, options);
 
 
 // Markkereiden tyylitys
